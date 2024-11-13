@@ -89,6 +89,8 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
   // console.log(reportData);
 
   let yearArray = [];
+  let YTD_year = 2025 ;
+
   reportData.forEach((mis) => {
     yearArray.push(mis.year);
   });
@@ -447,7 +449,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                 </Typography>
                 <Typography sx={{ fontSize: 16 }} color="text.secondary">
                   ₹{getArraySum(myPageData.thisYearRevenueActualArr)}Cr.
-                  {endYear === 2025 ? "(YTD)" : ""} of ₹{getArraySum(myPageData.thisYearRevenueTargetArr)}Cr.
+                  {endYear === YTD_year ? "(YTD)" : ""} of ₹{getArraySum(myPageData.thisYearRevenueTargetArr)}Cr.
                 </Typography>
                 <Divider></Divider>
                 <Typography variant="h5" component="div" marginTop={"1rem"}>
@@ -455,7 +457,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                 </Typography>
                 <Typography sx={{ fontSize: 16 }} color="text.secondary">
                   ₹{getArraySum(myPageData.thisYearPBTActualArr)}Cr.
-                  {endYear === 2025 ? "(YTD)" : ""} of ₹{getArraySum(myPageData.thisYearPBTTargetArr)}Cr.
+                  {endYear === YTD_year ? "(YTD)" : ""} of ₹{getArraySum(myPageData.thisYearPBTTargetArr)}Cr.
                 </Typography>
                 <Divider></Divider>
                 <Typography variant="h5" component="div" marginTop={"1rem"}>
@@ -467,7 +469,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       getArraySum(myPageData.thisYearRevenueActualArr)) *
                       100
                   )}
-                  % {endYear === 2025 ? "(YTD)" : ""}
+                  % {endYear === YTD_year ? "(YTD)" : ""}
                 </Typography>
                 <Divider></Divider>
                 <p>&nbsp;</p>
@@ -480,7 +482,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       myPageData.thisYearARPOBActualYTD.length - 1
                     ]
                   }
-                  {endYear === 2025 ? "(YTD)" : ""}
+                  {endYear === YTD_year ? "(YTD)" : ""}
                 </Typography>
                 <Divider></Divider>
                 <Typography variant="h5" component="div" marginTop={"1rem"}>
@@ -493,7 +495,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                     ]
                   }
                   {" days."}
-                  {endYear === 2025 ? "(YTD)" : ""}
+                  {endYear === YTD_year ? "(YTD)" : ""}
                 </Typography>
                 <Divider></Divider>
                 <Typography variant="h5" component="div" marginTop={"1rem"}>
@@ -501,7 +503,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                 </Typography>
                 <Typography sx={{ fontSize: 16 }} color="text.secondary">
                   {getArraySum(myPageData.thisYearIndoorPatientActualArr)}
-                  {endYear === 2025 ? "(YTD)" : ""}
+                  {endYear === YTD_year ? "(YTD)" : ""}
                 </Typography>
                 {/* <Divider></Divider> */}
               </CardContent>
@@ -591,7 +593,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                         },
                         {
                           name1_: `FY ${endYear} Actuals${
-                            endYear === 2025 ? "(YTD)" : ""
+                            endYear === YTD_year ? "(YTD)" : ""
                           }`,
                           name: `FY ${endYear} Actuals`,
                           data: [
@@ -691,7 +693,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                         },
                         {
                           name_1: `FY ${endYear} Actuals${
-                            endYear === 2025 ? "(YTD)" : ""
+                            endYear === YTD_year ? "(YTD)" : ""
                           }`,
                           name: `FY ${endYear} Actuals`,
                           data: [
@@ -762,7 +764,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                         },
                         {
                           name_1: `FY ${endYear} Actuals${
-                            endYear === 2025 ? "(YTD)" : ""
+                            endYear === YTD_year ? "(YTD)" : ""
                           }`,
                           name: `FY ${endYear} Actuals`,
                           data: [
@@ -811,7 +813,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                         },
                         {
                           name_1: `FY ${endYear} Actuals${
-                            endYear === 2025 ? "(YTD)" : ""
+                            endYear === YTD_year ? "(YTD)" : ""
                           }`,
                           name: `FY ${endYear} Actuals`,
                           data: [
@@ -873,7 +875,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                         },
                         {
                           name_1: `FY ${endYear} Actuals${
-                            endYear === 2025 ? "(YTD)" : ""
+                            endYear === YTD_year ? "(YTD)" : ""
                           }`,
                           name: `FY ${endYear} Actuals`,
                           data: [
@@ -1143,7 +1145,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                     },
                     {
                       name: `FY ${endYear} Budget${
-                        endYear >= 2025 ? "(YTD)" : ""
+                        endYear >= YTD_year ? "(YTD)" : ""
                       }`,
                       data: [
                         `${Math.round(
@@ -1165,7 +1167,7 @@ const HospitalDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                     },
                     {
                       name: `FY ${endYear}  Actuals${
-                        endYear >= 2025 ? "(YTD)" : ""
+                        endYear >= YTD_year ? "(YTD)" : ""
                       }`,
                       data: [
                         `${Math.round(
