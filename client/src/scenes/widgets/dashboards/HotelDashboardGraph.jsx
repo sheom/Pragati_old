@@ -50,7 +50,7 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
     //alert("selectedYear: "+selectedYear)
     let misYear = Number(selectedYear.split("-")[1]);
     //alert("misYear: "+misYear)
-    let responseURL ="http://localhost:4000/mis/new?propertyCode=PIK&year=2025"
+    let responseURL = "http://localhost:4000/mis/new?propertyCode=PIK&year=2025"
     responseURL = `https://sheom.in/mis/new?propertyCode=${propertyCode}&year=${misYear}`
     const response = await fetch(responseURL,
       {
@@ -98,8 +98,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
   let endYear = selectedYear
     ? Number(selectedYear.split("-")[1])
     : yearArray[yearArray.length - 1];
-    let YTD_year = 2025 ;
-    //
+  let YTD_year = 2025;
+  //
   //alert("selectedYear: "+selectedYear+" endYear: "+endYear);
 
   /////////////////////Helper functions//////////////////////
@@ -191,16 +191,16 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
 
       if (Number(mis.year) === Number(endYear)) {
         //alert("Year Matched this year");
-        myPageData.thisYearRevenueActualArr = mis.data.revenue.actual? [...mis.data.revenue.actual]: [] ; 
-        myPageData.thisYearRevenueTargetArr = mis.data.revenue.target? [...mis.data.revenue.target] : [];
+        myPageData.thisYearRevenueActualArr = mis.data.revenue.actual ? [...mis.data.revenue.actual] : [];
+        myPageData.thisYearRevenueTargetArr = mis.data.revenue.target ? [...mis.data.revenue.target] : [];
         //
         console.log("******************************************************")
-        console.log("mis year"+mis.year);
+        console.log("mis year" + mis.year);
         console.log(mis.data.revenue.target);
         console.log("******************************************************")
         //
 
-        myPageData.thisYearRoomRevenueActualArr = mis.data.roomRevenue.actual? [ ...mis.data.roomRevenue.actual,]:[];
+        myPageData.thisYearRoomRevenueActualArr = mis.data.roomRevenue.actual ? [...mis.data.roomRevenue.actual,] : [];
         myPageData.thisYearRoomRevenueTargetArr = [
           ...mis.data.roomRevenue.target,
         ];
@@ -297,16 +297,16 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
         myPageData.lastYearOccupancyActual = mis.data.occupancy.actual
           ? [...mis.data.occupancy.actual]
           : [];
-        myPageData.lastYearOccupancyActualYTD = [
-          ...mis.data.occupancy.actual_ytd,
-        ];
-        myPageData.lastYearOccupancyQuatActual = [
-          ...mis.data.occupancy.actual_q,
-        ];
+        myPageData.lastYearOccupancyActualYTD = mis.data.occupancy.actual_ytd ?
+          [...mis.data.occupancy.actual_ytd,]
+          : [];
+        myPageData.lastYearOccupancyQuatActual = mis.data.occupancy.actual_q ?
+        [ ...mis.data.occupancy.actual_q, ]
+        : [];
         //
-        myPageData.lastYearArrActual = [...mis.data.arr.actual];
-        myPageData.lastYearArrActualYTD = [...mis.data.arr.actual_ytd];
-        myPageData.lastYearArrQuatActual = [...mis.data.arr.actual_q];
+        myPageData.lastYearArrActual = mis.data.arr.actual? [...mis.data.arr.actual]: [ ];
+        myPageData.lastYearArrActualYTD = mis.data.arr.actual_ytd ? [...mis.data.arr.actual_ytd]: [ ];
+        myPageData.lastYearArrQuatActual = mis.data.arr.actual_q ?  [...mis.data.arr.actual_q]: [];
         //
         //
         myPageData.lastYearRevPar = getRevPar(
@@ -328,11 +328,11 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
       ).toFixed(2);
       myPageData.thisYearEBIDTAActualmgn[a] = Number(
         myPageData.thisYearEBIDTAActualArr[a] /
-          myPageData.thisYearRevenueActualArr[a]
+        myPageData.thisYearRevenueActualArr[a]
       ).toFixed(2);
       myPageData.thisYearEBIDTATargetmgn[a] = Number(
         myPageData.thisYearEBIDTATargetArr[a] /
-          myPageData.thisYearRevenueTargetArr[a]
+        myPageData.thisYearRevenueTargetArr[a]
       ).toFixed(2);
       //
       myPageData.lastYearRoomRevenueArr[a] = Number(
@@ -455,7 +455,7 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
     let returnArray = [];
     if (endYear === 2025) {
       if (propCode === "PIK") {
-        returnArray = [4.8,	4.8, 4.5,	4.5 ]
+        returnArray = [4.8, 4.8, 4.5, 4.5]
         //returnArray = [4.9,	4.8,4.8,5]
         //returnArray = [4.5, 4.6, 4.0, 3.8]
       }
@@ -465,21 +465,21 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
         //returnArray = [4.5, 4.8, 4.4, 4.0]
       }
       if (propCode === "PIH") {
-        returnArray = [4.4, 4.5, 4.5, 4.5 ];
+        returnArray = [4.4, 4.5, 4.5, 4.5];
         //returnArray = [4.8,	4.9,	4.7,	4.7];
         //returnArray = [4.5, 4.8, 4.5, 4.5];
       }
       if (propCode === "PRPB") {
-        returnArray = [4.7,	4.8, 4.5, 0 ];
-         //returnArray = [4.5,	4.7,	5,	0]
+        returnArray = [4.7, 4.8, 4.5, 0];
+        //returnArray = [4.5,	4.7,	5,	0]
         //returnArray = [4, 4.8, 4.3, 0]
       }
       if (propCode === "PRM") {
-        returnArray = [ 4.4, 4.7, 4.6, 5 ];
+        returnArray = [4.4, 4.7, 4.6, 5];
         //returnArray = [4.5,	4.8,	4.5,	0]
         //returnArray = [4, 4.6, 4.5, 3.8]
       }
-    }else if(endYear === 2024) {
+    } else if (endYear === 2024) {
       if (propCode === "PIK") {
         returnArray = [4.5, 4.6, 4.0, 3.8]
         //returnArray = [4.3, 4.5, 4.0, 4.1];
@@ -519,12 +519,12 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
     if (endYear === 2024) {
       returnValue =
         myPageData.thisYearOccupancyActualYTD[
-          myPageData.thisYearOccupancyActualYTD.length - 1
+        myPageData.thisYearOccupancyActualYTD.length - 1
         ];
     } else {
       returnValue = Math.round(
         getArraySum(myPageData.thisYearOccupancyActual) /
-          myPageData.thisYearOccupancyActual.length
+        myPageData.thisYearOccupancyActual.length
       );
     }
     return returnValue;
@@ -535,12 +535,12 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
     if (endYear === 2024) {
       returnValue =
         myPageData.thisYearArrActualYTD[
-          myPageData.thisYearArrActualYTD.length - 1
+        myPageData.thisYearArrActualYTD.length - 1
         ];
     } else {
       returnValue = Math.round(
         getArraySum(myPageData.thisYearArrActual) /
-          myPageData.thisYearArrActual.length
+        myPageData.thisYearArrActual.length
       );
     }
     return returnValue;
@@ -597,7 +597,7 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                   {Math.round(
                     (getArraySum(myPageData.thisYearEBIDTAActualArr) /
                       getArraySum(myPageData.thisYearRevenueActualArr)) *
-                      100
+                    100
                   )}
                   % {endYear === YTD_year ? "(YTD)" : ""}
                   <br />
@@ -631,10 +631,10 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
           }}
         >
           <Card
-            style={{ 
+            style={{
               height: "100%",
               backgroundColor: palette.neutral.light,
-            }} 
+            }}
           >
             <CardContent>
               <Box>
@@ -647,7 +647,7 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                     marginTop: "1rem",
                   }}
                 >
-                  <div style={{ width: isNonMobileScreens ? "59%" : "100%"  }}>
+                  <div style={{ width: isNonMobileScreens ? "59%" : "100%" }}>
                     {/* <StackedChartQuarterly
                     title="Revenue breakup (in Cr.)"
                     type={"bar"}
@@ -756,9 +756,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                           //[10.48, 10.97, 13.86, 13.82]
                         },
                         {
-                          name1_: `FY ${endYear} Actuals${
-                            endYear === 2024 ? "(YTD)" : ""
-                          }`,
+                          name1_: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                            }`,
                           name: `FY ${endYear} Actuals`,
                           data: [
                             getArraySum([
@@ -787,7 +786,7 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       ]}
                     />
                   </div>
-                  <div style={{ width: isNonMobileScreens ? "39%" : "100%"  }}>
+                  <div style={{ width: isNonMobileScreens ? "39%" : "100%" }}>
                     <AllChartQuarterly
                       title="PBT (in Cr.)"
                       type="bar"
@@ -846,9 +845,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                           //data: [ 1.57,	1.93,	3.52,	4.10 ]
                         },
                         {
-                          name1_old: `FY ${endYear} Actuals${
-                            endYear === 2024 ? "(YTD)" : ""
-                          }`,
+                          name1_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                            }`,
                           name: `FY ${endYear} Actuals`,
                           data: [
                             getArraySum([
@@ -886,7 +884,7 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <div style={{ width: isNonMobileScreens ? "32%" : "100%"  }}>
+                  <div style={{ width: isNonMobileScreens ? "32%" : "100%" }}>
                     <AllChartQuarterly
                       title="Occupancy (in %)"
                       type="bar"
@@ -943,9 +941,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                           //data: [ 2.57, 2.92, 4.52, 5.58 ]
                         },
                         {
-                          name_old: `FY ${endYear} Actuals${
-                            endYear === 2024 ? "(YTD)" : ""
-                          }`,
+                          name_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                            }`,
                           name: `FY ${endYear} Actuals`,
                           data: [
                             myPageData.thisYearOccupancyQuatActual[2],
@@ -1074,9 +1071,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                           //data: [ 4377,	4367,	5100,	5355  ]
                         },
                         {
-                          name_old: `FY ${endYear} Actuals${
-                            endYear === 2024 ? "(YTD)" : ""
-                          }`,
+                          name_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                            }`,
                           name: `FY ${endYear} Actuals`,
                           data: [
                             myPageData.thisYearArrQuatActual[2],
@@ -1123,9 +1119,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                   <div style={{ width: isNonMobileScreens ? "32%" : "100%" }}>
                     {/* <AllChartQuarterly */}
                     <AllChartQuarterlyRange
-                      title={`Customer Ratings${
-                        endYear === 2024 ? " - Q4" : ""
-                      }`}
+                      title={`Customer Ratings${endYear === 2024 ? " - Q4" : ""
+                        }`}
                       subTitle={`scale of 1 to 5`}
                       //categories={["PIK","PID","PIH","PRPB", "PRM"]}
                       categories={["Google", "Trip Advisor", "MMT", "Go ibibo"]}
@@ -1133,8 +1128,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       series={[
                         {
                           //name: `FY ${endYear} Q4`,
-                          name: endYear === 2024 ?`FY 2024 Q4`
-                          : `FY 2025 Q1`,
+                          name: endYear === 2024 ? `FY 2024 Q4`
+                            : `FY 2025 Q1`,
                           data: getRating(),
                         },
                       ]}
@@ -1209,9 +1204,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       // ],
                     },
                     {
-                      name_old: `FY ${endYear} Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       name: `FY ${endYear} Actuals`,
                       data: [...myPageData.thisYearRevenueActualArr],
                       // data: [
@@ -1220,7 +1214,7 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       // ],
                     },
                   ]}
-                  //colors={["#275be8", "#c4e8ef"]}
+                //colors={["#275be8", "#c4e8ef"]}
                 />
               </Box>
             </Box>
@@ -1247,9 +1241,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       data: [...myPageData.thisYearRoomRevenueTargetArr],
                     },
                     {
-                      name_old: `FY ${endYear} Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       name: `FY ${endYear} Actuals`,
                       data: [...myPageData.thisYearRoomRevenueActualArr],
                     },
@@ -1271,9 +1264,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       data: [...myPageData.thisYearFnBRevenueTargetArr],
                     },
                     {
-                      name_old: `FY ${endYear} Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       name: `FY ${endYear} Actuals`,
                       data: [...myPageData.thisYearFnBRevenueActualArr],
                     },
@@ -1295,9 +1287,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       data: [...myPageData.thisYearBanquetRevenueTargetArr],
                     },
                     {
-                      name_old: `FY ${endYear} Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       name: `FY ${endYear} Actuals`,
                       data: [...myPageData.thisYearBanquetRevenueActualArr],
                     },
@@ -1352,9 +1343,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       // ],
                     },
                     {
-                      name_old: `FY ${endYear} Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       name: `FY ${endYear} Actuals`,
                       data: [...myPageData.thisYearEBIDTAActualArr],
                       // data: [
@@ -1378,7 +1368,7 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                 justifyContent: "space-between",
               }}
             >
-              <Box style={{ width: isNonMobileScreens ? "29%" : "100%"  }}>
+              <Box style={{ width: isNonMobileScreens ? "29%" : "100%" }}>
                 <Radialbar
                   title="PBT Budgeted vs YTD Actual"
                   //series={[13.9]}
@@ -1391,7 +1381,7 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                   ]}
                 />
               </Box>
-              <Box style={{ width: isNonMobileScreens ? "70%" : "100%"  }}>
+              <Box style={{ width: isNonMobileScreens ? "70%" : "100%" }}>
                 <AllChart
                   title="PBT (in Cr.)"
                   //type="line"
@@ -1413,9 +1403,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       // ],
                     },
                     {
-                      name_old: `FY ${endYear} Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       name: `FY ${endYear} Actuals`,
                       data: [...myPageData.thisYearPBTActualArr],
                       // data: [
@@ -1442,14 +1431,14 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
               {
                 console.log(
                   "Last Year EBIDTA Total: " +
-                    getArraySum([...myPageData.lastYearEBDITAArr])
+                  getArraySum([...myPageData.lastYearEBDITAArr])
                 )
                 // console.log((getArraySum([...myPageData.lastYearEBDITAArr])/
                 //           getArraySum([...myPageData.lastYearRevenueArr]) ) );
               }
               {console.log(
                 "Last Year Revenue total: " +
-                  getArraySum([...myPageData.lastYearRevenueArr])
+                getArraySum([...myPageData.lastYearRevenueArr])
               )}
               <Box style={{ width: isNonMobileScreens ? "29%" : "100%" }}>
                 <AllChartYTD
@@ -1490,14 +1479,13 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                         `${Math.round(
                           (getArraySum([...myPageData.lastYearEBDITAArr]) /
                             getArraySum([...myPageData.lastYearRevenueArr])) *
-                            100
+                          100
                         )}`,
                       ],
                     },
                     {
-                      name: `FY ${endYear} Budget${
-                        endYear >= 2024 ? "(YTD)" : ""
-                      }`,
+                      name: `FY ${endYear} Budget${endYear >= 2024 ? "(YTD)" : ""
+                        }`,
                       data: [
                         `${Math.round(
                           (getArraySum(
@@ -1512,25 +1500,24 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                                 myPageData.thisYearEBIDTAActualArr.length
                               )
                             )) *
-                            100
+                          100
                         )}`,
                       ],
                     },
                     {
-                      name: `FY ${endYear}  Actuals${
-                        endYear >= 2024 ? "(YTD)" : ""
-                      }`,
+                      name: `FY ${endYear}  Actuals${endYear >= 2024 ? "(YTD)" : ""
+                        }`,
                       data: [
                         `${Math.round(
                           (getArraySum(myPageData.thisYearEBIDTAActualArr) /
                             getArraySum(myPageData.thisYearRevenueActualArr)) *
-                            100
+                          100
                         )}`,
                       ],
                     },
                   ]}
                   colors={getColor("EBIDTAmgn")}
-                  //colors={["#0000FF", "#22FF22", "#FF0000"]}
+                //colors={["#0000FF", "#22FF22", "#FF0000"]}
                 />
               </Box>
               <Box style={{ width: isNonMobileScreens ? "70%" : "100%" }}>
@@ -1555,9 +1542,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       // ],
                     },
                     {
-                      name_old: `FY ${endYear} Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       name: `FY ${endYear} Actuals`,
                       data: [...myPageData.thisYearEBIDTAActualmgn],
                       // data: [
@@ -1592,33 +1578,31 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       data: [
                         `${Math.round(
                           getArraySum([...myPageData.lastYearOccupancyActual]) /
-                            12
+                          12
                         )}`,
                       ],
                       //data: [ 75.92],
                     },
                     {
-                      name: `FY ${endYear} Budget${
-                        endYear >= 2024 ? "(Yearly)" : ""
-                      }`,
+                      name: `FY ${endYear} Budget${endYear >= 2024 ? "(Yearly)" : ""
+                        }`,
                       data: [
                         `${Math.round(
                           getArraySum([...myPageData.thisYearOccupancyTarget]) /
-                            12
+                          12
                         )}`,
                       ],
                       //data: [91.50],
                     },
                     {
-                      name: `FY ${endYear}  Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name: `FY ${endYear}  Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       data: [`${getOccupancy_ytd()}`],
                       //data: [78.00],
                     },
                   ]}
                   colors={getColor("Occupancy")}
-                  //colors={["#0000FF", "#22FF22", "#FF0000"]}
+                //colors={["#0000FF", "#22FF22", "#FF0000"]}
                 />
               </Box>
               <Box style={{ width: isNonMobileScreens ? "70%" : "100%" }}>
@@ -1638,9 +1622,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       //data: [95, 88, 88, 92, 95, 90, 90, 93, 95, 95, 93, 84],
                     },
                     {
-                      name_old: `FY ${endYear} Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       name: `FY ${endYear} Actuals`,
                       data: [...myPageData.thisYearOccupancyActual],
                       //data: [62, 64, 61, 76, 62, 73, 65, 89, 96, 91, 95, 77],
@@ -1678,9 +1661,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       ],
                     },
                     {
-                      name: `FY ${endYear} Budget${
-                        endYear >= 2024 ? "(Yearly)" : ""
-                      }`,
+                      name: `FY ${endYear} Budget${endYear >= 2024 ? "(Yearly)" : ""
+                        }`,
                       //data: [`${5125+5}`],
                       data: [
                         `${Math.round(
@@ -1689,9 +1671,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       ],
                     },
                     {
-                      name: `FY ${endYear}  Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name: `FY ${endYear}  Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       //data: [4650],
                       data: [`${getARR_ytd()}`],
                     },
@@ -1724,9 +1705,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       // ],
                     },
                     {
-                      name_old: `FY ${endYear} Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       name: `FY ${endYear} Actuals`,
                       data: [...myPageData.thisYearArrActual],
                       // data: [
@@ -1767,9 +1747,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       ],
                     },
                     {
-                      name: `FY ${endYear} Budget${
-                        endYear >= 2024 ? "(Yearly)" : ""
-                      }`,
+                      name: `FY ${endYear} Budget${endYear >= 2024 ? "(Yearly)" : ""
+                        }`,
                       //data: [`${5125+5}`],
                       data: [
                         `${Math.round(
@@ -1778,14 +1757,13 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       ],
                     },
                     {
-                      name: `FY ${endYear}  Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name: `FY ${endYear}  Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       //data: [4650],
                       data: [
                         `${Math.round(
                           getArraySum([...myPageData.thisYearRevParActual]) /
-                            myPageData.thisYearRevParActual.length
+                          myPageData.thisYearRevParActual.length
                         )}`,
                       ],
                     },
@@ -1818,9 +1796,8 @@ const HotelDashboardGraph = ({ propertyId, propertyCode, selectedYear }) => {
                       // ],
                     },
                     {
-                      name_old: `FY ${endYear} Actuals${
-                        endYear === 2024 ? "(YTD)" : ""
-                      }`,
+                      name_old: `FY ${endYear} Actuals${endYear === 2024 ? "(YTD)" : ""
+                        }`,
                       name: `FY ${endYear} Actuals`,
                       data: [...myPageData.thisYearRevParActual],
                       // data: [
