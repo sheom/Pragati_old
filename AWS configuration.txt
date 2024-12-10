@@ -1,14 +1,3 @@
-User name: admin	
-Password: Peerless@1932	
-Console sign-in URL: https://882659181532.signin.aws.amazon.com/console
-
-
-MongoDb:
-peerlessone@peerless.co.in
-Andr0id@123
-2-factor auth with Authenticator
-
-
 
 https://www.notes2free.com/blogs/deploy-mern-state-application-in-aws-ec2
 https://www.notes2free.com/blogs/deploy-mern-state-application-in-aws-ec2
